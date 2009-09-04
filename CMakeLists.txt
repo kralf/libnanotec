@@ -9,9 +9,11 @@ remake_project(
   SUMMARY "Driver library for the Nanotec PDx-1 motor."
   AUTHOR "Ralf Kaestner"
   AUTHOR "Stefan Gaechter"
+  AUTHOR "Jan Weingarten"
   CONTACT "ralf.kaestner@gmail.com"
   HOME "http://aslforge.ethz.ch/projects/libnanotec"
   LICENSE "GNU Lesser General Public License (LGPL)"
+  PREFIX nanotec-
   INSTALL /usr
 )
 
