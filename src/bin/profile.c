@@ -21,8 +21,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <nanotec.h>
-#include <profile.h>
+#include "nanotec.h"
+#include "profile.h"
 
 int main(int argc, char **argv) {
   if ((argc != 2) && (argc != 5)) {

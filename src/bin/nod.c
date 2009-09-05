@@ -22,8 +22,8 @@
 #include <stdlib.h>
 #include <signal.h>
 
-#include <nanotec.h>
-#include <profile.h>
+#include "nanotec.h"
+#include "profile.h"
 
 int quit = 0;
 

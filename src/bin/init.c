@@ -20,7 +20,7 @@
 
 #include <stdio.h>
 
-#include <nanotec.h>
+#include "nanotec.h"
 
 int main(int argc, char **argv) {
   if (argc != 2) {
