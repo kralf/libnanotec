@@ -5,6 +5,6 @@ remake_find_library(
 
 remake_add_library(
   nanotec PREFIX OFF
-  LINK ${TULIBS_LIBRARY}  
+  LINK ${TULIBS_SERIAL_LIBRARY}  
 )
 remake_add_headers()
