@@ -22,6 +22,6 @@ remake_doc(
   html
 )
 
-remake_pack_deb()
-remake_pack_deb(COMPONENT dev)
+remake_pack_deb(tulibs)
+remake_pack_deb(COMPONENT dev tulibs-dev)
 remake_pack_deb(COMPONENT doc)

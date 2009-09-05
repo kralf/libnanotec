@@ -23,8 +23,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "nanotec.h"
-#include "serial.h"
+#include "motor.h"
 
 int nanotec_motor_write(nanotec_motor_p motor, unsigned char *command,
   ssize_t size) {

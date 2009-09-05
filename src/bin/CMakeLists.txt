@@ -1,5 +1,4 @@
 remake_include(
-  ../lib/serial
-  ../lib/nanotec
+  ../lib
 )
 remake_add_executables(LINK nanotec)
