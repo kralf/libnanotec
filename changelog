@@ -1,3 +1,9 @@
+libnanotec (0.1-10) lucid; urgency=low
+
+  * Excluded vendor directory from source packages
+
+ -- Ralf Kaestner <ralf.kaestner@gmail.com>  Thu, 05 Sep 2013 15:55:00 +0100
+
 libnanotec (0.1-9) lucid; urgency=low
 
   * Added pkg-config file
