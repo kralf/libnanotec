@@ -11,7 +11,7 @@ remake_project(
   AUTHOR "Stefan Gaechter"
   AUTHOR "Jan Weingarten"
   CONTACT "ralf.kaestner@gmail.com"
-  HOME "http://aslforge.ethz.ch/projects/libnanotec"
+  HOME "http://github.com/kralf/libnanotec"
   LICENSE "GNU Lesser General Public License (LGPL)"
   PREFIX nanotec-
   INSTALL /usr
@@ -22,6 +22,36 @@ remake_doc(
   html
 )
 
-remake_pack_deb(tulibs)
-remake_pack_deb(COMPONENT dev tulibs-dev)
-remake_pack_deb(ARCH all COMPONENT doc)
+remake_pack_deb(
+  DEPENDS tulibs
+)
+remake_pack_deb(
+  COMPONENT utils
+  DESCRIPTION "utilities"
+  DEPENDS libnanotec
+)
+remake_pack_deb(
+  COMPONENT dev
+  DESCRIPTION "development headers"
+  DEPENDS libnanotec tulibs-dev
+)
+remake_pack_deb(
+  ARCH all
+  COMPONENT doc
+  DESCRIPTION "documentation"
+)
+
+remake_distribute_deb(
+  DISTRIBUTION lucid
+  SECTION libs
+  UPLOAD ppa:kralf/asl
+  DEPENDS tulibs-dev remake pkg-config doxygen
+  PASS CMAKE_BUILD_TYPE LIBNANOTEC_GIT_REVISION
+)
+remake_distribute_deb(
+  DISTRIBUTION precise
+  SECTION libs
+  UPLOAD ppa:kralf/asl
+  DEPENDS tulibs-dev remake pkg-config doxygen
+  PASS CMAKE_BUILD_TYPE LIBNANOTEC_GIT_REVISION
+)

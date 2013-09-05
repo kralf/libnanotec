@@ -1,10 +1,5 @@
-remake_find_library(
-  tulibs-serial serial.h
-  PACKAGE tulibs
-)
-
 remake_add_library(
   nanotec PREFIX OFF
-  LINK ${TULIBS_SERIAL_LIBRARY}  
+  LINK ${TULIBS_LIBRARIES}  
 )
 remake_add_headers()
