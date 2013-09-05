@@ -1,0 +1,47 @@
+kralf (0.1-7) unstable; urgency=low
+
+  * Added changelog
+
+ -- Ralf Kaestner <ralf.kaestner@gmail.com>  Thu, 05 Sep 2013 15:41:00 +0100
+
+kralf (0.1-6) unstable; urgency=low
+
+  * Adapted to recent changes in ReMake
+
+ -- Ralf Kaestner <ralf.kaestner@gmail.com>  Tue, 08 Sep 2009 07:50:14 +0200
+
+kralf (0.1-5) unstable; urgency=low
+
+  * Doc package is architecture independent
+
+ -- Ralf Kaestner <ralf.kaestner@gmail.com>  Sat, 05 Sep 2009 14:23:48 +0200
+
+kralf (0.1-4) unstable; urgency=low
+
+  * Utility binaries include local headers
+
+ -- Ralf Kaestner <ralf.kaestner@gmail.com>  Sat, 05 Sep 2009 12:10:57 +0200
+
+kralf (0.1-3) unstable; urgency=low
+
+  * Adapted to remake_find_library() changes
+
+ -- Ralf Kaestner <ralf.kaestner@gmail.com>  Sat, 05 Sep 2009 11:25:41 +0200
+
+kralf (0.1-2) unstable; urgency=low
+
+  * Externalized Tulibs config library
+
+ -- Ralf Kaestner <ralf.kaestner@gmail.com>  Sat, 05 Sep 2009 10:28:04 +0200
+
+kralf (0.1-1) unstable; urgency=low
+
+  * ReMake port of libnanotec
+
+ -- Ralf Kaestner <ralf.kaestner@gmail.com>  Fri, 04 Sep 2009 22:07:07 +0200
+
+kralf (0.1-0) unstable; urgency=low
+
+  * Initial revision of libnanotec
+
+ -- Ralf Kaestner <ralf.kaestner@gmail.com>  Fri, 04 Sep 2009 21:12:04 +0200

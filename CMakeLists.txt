@@ -6,7 +6,7 @@ remake_project(
   libnanotec
   VERSION 0.1
   RELEASE alpha
-  SUMMARY "Driver library for the Nanotec PDx-1 motor."
+  SUMMARY "Driver library for the Nanotec PDx-1 stepper motor."
   AUTHOR "Ralf Kaestner"
   AUTHOR "Stefan Gaechter"
   AUTHOR "Jan Weingarten"
