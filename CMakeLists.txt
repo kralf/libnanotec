@@ -57,3 +57,11 @@ remake_distribute_deb(
   PASS CMAKE_BUILD_TYPE LIBNANOTEC_GIT_REVISION
   EXCLUDE "vendor"
 )
+remake_distribute_deb(
+  DISTRIBUTION trusty
+  SECTION libs
+  UPLOAD ppa:kralf/asl
+  DEPENDS tulibs-dev remake pkg-config doxygen
+  PASS CMAKE_BUILD_TYPE LIBNANOTEC_GIT_REVISION
+  EXCLUDE "vendor"
+)

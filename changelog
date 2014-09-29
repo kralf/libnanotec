@@ -1,3 +1,9 @@
+libnanotec (0.1-11) lucid; urgency=low
+
+  * Release distribution for Ubuntu Trusty Tahr
+
+ -- Ralf Kaestner <ralf.kaestner@gmail.com>  Mon, 29 Sep 2014 10:10:00 +0100
+
 libnanotec (0.1-10) lucid; urgency=low
 
   * Excluded vendor directory from source packages
