@@ -42,9 +42,9 @@ typedef struct nanotec_settings_t {
   int step_freq;
 
   char device_name[NANOTEC_MAX_NAME_LENGTH];
-  int baudrate;
-  NANOTEC_BYTE databits;
-  NANOTEC_BYTE stopbits;
+  int baud_rate;
+  NANOTEC_BYTE data_bits;
+  NANOTEC_BYTE stop_bits;
   NANOTEC_DWORD parity;
 
   int work_mode;
@@ -59,7 +59,7 @@ typedef struct nanotec_settings_t {
 
 void nanotec_settings_default(nanotec_settings_p settings, int motor_id);
 void nanotec_settings_init(nanotec_settings_p settings, const char*
-  device_name, int baudrate, float init_pos);
+  device_name, int baud_rate, float init_pos);
 void nanotec_settings_profile(nanotec_settings_p settings, float min_velocity,
   float max_velocity, float acceleration);
 

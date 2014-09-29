@@ -32,9 +32,9 @@ void nanotec_settings_default(nanotec_settings_p settings, int motor_id) {
   settings->step_freq = 100;
 
   strcpy(settings->device_name, "COM1");
-  settings->baudrate = 19200;
-  settings->databits = 8;
-  settings->stopbits = NANOTEC_TWOSTOPBITS;
+  settings->baud_rate = 19200;
+  settings->data_bits = 8;
+  settings->stop_bits = NANOTEC_TWOSTOPBITS;
   settings->parity = NANOTEC_NOPARITY;
 
   settings->work_mode = NANOTEC_WORK_MODE_POS;
@@ -48,13 +48,13 @@ void nanotec_settings_default(nanotec_settings_p settings, int motor_id) {
 }
 
 void nanotec_settings_init(nanotec_settings_p settings, const char*
-  device_name, int baudrate, float init_pos) {
+  device_name, int baud_rate, float init_pos) {
   nanotec_settings_default(settings, 0);
 
   if (device_name != NULL)
     strcpy(settings->device_name, device_name);
-  if (baudrate != 0)
-    settings->baudrate = baudrate;
+  if (baud_rate != 0)
+    settings->baud_rate = baud_rate;
   if (init_pos != 0.0)
     settings->init_pos = init_pos;
 }
@@ -72,9 +72,9 @@ void nanotec_settings_profile(nanotec_settings_p settings, float min_velocity,
 int nanotec_settings_check(nanotec_settings_p settings) {
   int result = NANOTEC_TRUE;
 
-  if(settings->baudrate != 19200) {
-    fprintf(stderr, "ERROR: baudrate of %d is not valid!\n",
-      settings->baudrate);
+  if(settings->baud_rate != 19200) {
+    fprintf(stderr, "ERROR: baud rate of %d is not valid!\n",
+      settings->baud_rate);
     result = NANOTEC_FALSE;
   }
 

@@ -47,8 +47,8 @@ int nanotec_motor_write(nanotec_motor_p motor, unsigned char *command,
   //fprintf(stderr, "\n");
   // DEBUG
 
-  num_written = serial_write(&motor->dev, write_buffer, pos);
-  num_read = serial_read(&motor->dev, read_buffer, num_written-1);
+  num_written = serial_device_write(&motor->dev, write_buffer, pos);
+  num_read = serial_device_read(&motor->dev, read_buffer, num_written-1);
   if ((num_read == num_written-1) &&
     !strncmp(&write_buffer[1], read_buffer, num_read))
     result = NANOTEC_TRUE;
@@ -81,11 +81,11 @@ int nanotec_motor_read(nanotec_motor_p motor, unsigned char *data,
     write_buffer[pos++] = command[i];
   write_buffer[pos++] = 0x0d;
 
-  num_written = serial_write(&motor->dev, write_buffer, size+3);
-  num_read = serial_read(&motor->dev, read_buffer, size+1);
+  num_written = serial_device_write(&motor->dev, write_buffer, size+3);
+  num_read = serial_device_read(&motor->dev, read_buffer, size+1);
   if ((num_read == size+1) && !strncmp(&write_buffer[1], read_buffer, size)) {
     pos = 0;
-    while (serial_read(&motor->dev, read_buffer, 1) == 1) {
+    while (serial_device_read(&motor->dev, read_buffer, 1) == 1) {
       if (read_buffer[0] != 0x0d)
         data[pos++] = read_buffer[0];
       else
@@ -121,21 +121,25 @@ int nanotec_motor_convert(int number, int min_digits, int max_digits,
 int nanotec_motor_init(nanotec_motor_p motor) {
   int result = NANOTEC_FALSE;
 
+  serial_device_init(&motor->dev, motor->settings.device_name);
+  
   fprintf(stderr, "INFO: serial connect %s ... ", motor->settings.device_name);
-  if (!serial_open(&motor->dev, motor->settings.device_name)) {
+  if (!serial_device_open(&motor->dev)) {
     fprintf(stderr, "ok\nINFO: serial setup %s ... ", motor->dev.name);
-    if(!serial_setup(&motor->dev, motor->settings.baudrate,
-      motor->settings.databits,
-      (motor->settings.stopbits == NANOTEC_TWOSTOPBITS) ? 2 : 1,
-      (motor->settings.parity == NANOTEC_NOPARITY) ? none :
-        (motor->settings.parity == NANOTEC_EVENPARITY) ? even : odd,
+    if(!serial_device_setup(&motor->dev, motor->settings.baud_rate,
+      motor->settings.data_bits,
+      (motor->settings.stop_bits == NANOTEC_TWOSTOPBITS) ? 2 : 1,
+      (motor->settings.parity == NANOTEC_NOPARITY) ? serial_parity_none :
+        (motor->settings.parity == NANOTEC_EVENPARITY) ? serial_parity_even :
+        serial_parity_odd,
+      serial_flow_ctrl_off,
       NANOTEC_SERIAL_TIMEOUT)) {
       fprintf(stderr, "ok\n");
       fprintf(stderr, "INFO: set port param %6d:%d%c%d ... ",
-        motor->dev.baudrate, motor->dev.databits,
-        (motor->dev.parity == none) ? 'N' :
-          (motor->dev.parity == even) ? 'E' : 'O',
-        motor->dev.stopbits);
+        motor->dev.baud_rate, motor->dev.data_bits,
+        (motor->dev.parity == serial_parity_none) ? 'N' :
+          (motor->dev.parity == serial_parity_even) ? 'E' : 'O',
+        motor->dev.stop_bits);
       fprintf(stderr, "ok\n");
       result = NANOTEC_TRUE;
     }
@@ -152,7 +156,7 @@ int nanotec_motor_close(nanotec_motor_p motor) {
   int result = NANOTEC_FALSE;
 
   fprintf(stderr, "INFO: serial disconnect %s ... ", motor->dev.name);
-  if (!serial_close(&motor->dev)) {
+  if (!serial_device_close(&motor->dev)) {
     fprintf(stderr, "ok\n");
     result = NANOTEC_TRUE;
   }

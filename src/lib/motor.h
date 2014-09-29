@@ -33,7 +33,7 @@
 #ifndef NANOTEC_MOTOR_H
 #define NANOTEC_MOTOR_H
 
-#include <tulibs/serial.h>
+#include <serial/serial.h>
 
 #include "settings.h"
 
